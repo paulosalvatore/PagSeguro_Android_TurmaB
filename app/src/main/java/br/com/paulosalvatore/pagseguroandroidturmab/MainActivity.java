@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final TextView tvPrincipal = findViewById(R.id.tvPrincipal);
-        /*final EditText etPrincipal = findViewById(R.id.etPrincipal);
-        final Button btSend = findViewById(R.id.btSend);
+        final EditText etPrincipal = findViewById(R.id.etPrincipal);
+        final Button btEnviar = findViewById(R.id.btEnviar);
 
-        btSend.setOnClickListener(new View.OnClickListener() {
+        btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String text = etPrincipal.getText().toString();
@@ -32,6 +32,6 @@ public class MainActivity extends AppCompatActivity {
                     etPrincipal.setError(getText(R.string.type_some_text));
                 }
             }
-        });*/
+        });
     }
 }
