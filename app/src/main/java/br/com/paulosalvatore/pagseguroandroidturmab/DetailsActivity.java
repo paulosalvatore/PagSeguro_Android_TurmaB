@@ -1,6 +1,7 @@
 package br.com.paulosalvatore.pagseguroandroidturmab;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,6 +68,12 @@ public class DetailsActivity extends AppCompatActivity {
             outState.remove(TEXT);
         }
 
+        UsuarioSerializable usuarioSerializable = new UsuarioSerializable("Paulo", "Salvatore");
+        outState.putSerializable("USUARIO_SERIALIZABLE", usuarioSerializable);
+
+        UsuarioParcelable usuarioParcelable = new UsuarioParcelable("Paulo", "Salvatore");
+        outState.putParcelable("USUARIO_PARCELABLE", usuarioParcelable);
+
         super.onSaveInstanceState(outState);
     }
 
@@ -78,6 +85,18 @@ public class DetailsActivity extends AppCompatActivity {
         if (persistedText != null && !persistedText.isEmpty()) {
             persistText = persistedText;
             textView.setText(persistedText);
+        }
+
+        UsuarioSerializable usuarioSerializable = (UsuarioSerializable) savedInstanceState.getSerializable("USUARIO_SERIALIZABLE");
+        if (usuarioSerializable != null) {
+            Log.d(getClass().getSimpleName(), usuarioSerializable.getNome());
+            Log.d(getClass().getSimpleName(), usuarioSerializable.getSobrenome());
+        }
+
+        UsuarioParcelable usuarioParcelable = savedInstanceState.getParcelable("USUARIO_PARCELABLE");
+        if (usuarioParcelable != null) {
+            Log.d(getClass().getSimpleName(), usuarioParcelable.getNome());
+            Log.d(getClass().getSimpleName(), usuarioParcelable.getSobrenome());
         }
     }
 }
