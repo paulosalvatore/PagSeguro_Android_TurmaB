@@ -1,5 +1,6 @@
 package br.com.paulosalvatore.pagseguroandroidturmab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,13 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        final Intent intent = getIntent();
+
+        String info = intent.getStringExtra("INFO");
+        if (info != null) {
+            Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+        }
+
         textView = findViewById(R.id.textView);
         final EditText editText = findViewById(R.id.editText);
         final Button btApplyChanges = findViewById(R.id.btApplyChanges);
@@ -39,6 +47,11 @@ public class DetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String text = editText.getText().toString();
                 textView.setText(text);
+
+                // Setting Result
+                intent.putExtra("RESULT", text);
+                setResult(RESULT_OK, intent);
+                DetailsActivity.this.finish();
             }
         });
 
