@@ -1,13 +1,13 @@
 package br.com.paulosalvatore.pagseguroandroidturmab;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -75,6 +75,9 @@ public class DetailsActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         String persistedText = savedInstanceState.getString(TEXT);
-        textView.setText(persistedText);
+        if (persistedText != null && !persistedText.isEmpty()) {
+            persistText = persistedText;
+            textView.setText(persistedText);
+        }
     }
 }
