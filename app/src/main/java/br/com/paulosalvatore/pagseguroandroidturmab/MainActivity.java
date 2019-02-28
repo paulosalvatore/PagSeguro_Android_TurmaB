@@ -1,13 +1,16 @@
 package br.com.paulosalvatore.pagseguroandroidturmab;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +36,15 @@ public class MainActivity extends AppCompatActivity {
         programmingLanguages.add(programmingLanguage);
         programmingLanguages.add(programmingLanguage);
 
-        RecyclerView.Adapter adapter = new ProgrammingLanguageAdapter(programmingLanguages);
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView tvTitle = v.findViewById(R.id.tvTitle);
+                Toast.makeText(MainActivity.this, "Clicked item: " + tvTitle.getText(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        RecyclerView.Adapter adapter = new ProgrammingLanguageAdapter(programmingLanguages, listener);
         recyclerView.setAdapter(adapter);
     }
 }
