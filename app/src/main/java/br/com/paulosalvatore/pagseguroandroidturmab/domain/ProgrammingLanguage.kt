@@ -1,4 +1,4 @@
-package br.com.paulosalvatore.pagseguroandroidturmab
+package br.com.paulosalvatore.pagseguroandroidturmab.domain
 
 import androidx.annotation.DrawableRes
 
